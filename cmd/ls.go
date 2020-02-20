@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"github.com/noculture/notes/models"
 	"github.com/spf13/cobra"
 	"gopkg.in/kyokomi/emoji.v1"
@@ -32,7 +33,7 @@ func getSpecificNotebook(db models.Datastore, notebookTitle string) {
 	if err != nil {
 		log.Panic()
 	}
-	emoji.Println(notebook.Name)
+	fmt.Println(notebook.Name)
 	for _, note := range notebook.Notes {
 		emoji.Println(" " + strconv.FormatUint(note.Id, 10) + "	" + note.Content)
 	}
@@ -44,7 +45,7 @@ func printAllNotebooks(db models.Datastore) {
 		log.Panic()
 	}
 	for _, n := range notebooks {
-		emoji.Println(" :notebook_with_decorative_cover: " + n.Name)
+		fmt.Println(" :notebook_with_decorative_cover: " + n.Name)
 	}
 }
 
